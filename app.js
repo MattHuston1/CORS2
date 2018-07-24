@@ -23,7 +23,7 @@ app.get('/:id', (request, response) => {
   if (!instructor) {
     response.status(404).json({
       error: {
-        message: 'No cohort found'
+        message: 'No record found'
       }
     })
   } else {
