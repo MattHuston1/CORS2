@@ -5,7 +5,7 @@ const port = parseInt(process.env.PORT || 8000)
 const app = express()
 app.use(cors())
 
-function returnCohortId(data, id) {
+function returnInstructorId(data, id) {
   for (let i = 0; i < data.length; i++) {
     if (data[i].id == id) {
       return data[i]
@@ -19,8 +19,8 @@ app.get('/', (request, response) => {
 })
 
 app.get('/:id', (request, response) => {
-  let cohort = returnCohortId(data, request.params.id)
-  if (!cohort) {
+  let instructor = returnInstructorId(data, request.params.id)
+  if (!instructor) {
     response.status(404).json({
       error: {
         message: 'No cohort found'
@@ -28,7 +28,7 @@ app.get('/:id', (request, response) => {
     })
   } else {
     response.json({
-      data: cohort
+      data: instructor
     })
   }
 })
